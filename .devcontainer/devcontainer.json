@@ -1,0 +1,22 @@
+{
+  "name": "KYFH-Interac Codespace",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-node",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+  "postCreateCommand": "pip install -r backend/requirements.txt && cd frontend && npm install",
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  },
+  "forwardPorts": [3000, 8000],
+  "remoteUser": "vscode"
+}
