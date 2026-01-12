@@ -1,6 +1,6 @@
 {
   "name": "KYFH-Interac Codespace",
-  "image": "mcr.microsoft.com/devcontainers/python:3.11-node",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "20"
