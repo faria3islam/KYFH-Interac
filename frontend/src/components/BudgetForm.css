@@ -135,6 +135,43 @@
   margin: 0;
   padding-left: 4.5rem;
 }
+
+/* View Toggle */
+.view-toggle {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.view-btn {
+  flex: 1;
+  background: transparent;
+  color: #6b7280;
+  border: none;
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.view-btn:hover {
+  background: #f9fafb;
+  color: #7c3aed;
+}
+
+.view-btn.active {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+}
+
 .logout-btn {
   display: flex;
   align-items: center;
@@ -150,12 +187,7 @@
   transition: all 0.2s;
   margin-left: auto;
 }
-logout-btn {
-    font-size: 0.875rem;
-    padding: 0.5rem 1rem;
-  }
 
-  .
 .logout-btn:hover {
   background: #7c3aed;
   color: white;

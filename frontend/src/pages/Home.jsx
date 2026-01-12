@@ -2,10 +2,12 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import BudgetForm from "../components/BudgetForm"
 import Dashboard from "../components/Dashboard"
+import Payments from "../components/Payments"
 import "../components/BudgetForm.css"
 
 export default function Home() {
   const [refreshKey, setRefreshKey] = useState(0)
+  const [activeView, setActiveView] = useState("dashboard")
   const navigate = useNavigate()
 
   return (
@@ -32,8 +34,31 @@ export default function Home() {
           </div>
           <p className="home-subtitle">Autonomous AI Agent for Smart Shared Expense Management</p>
         </div>
-        <BudgetForm onBudgetCreated={() => setRefreshKey(prev => prev + 1)} />
-        <Dashboard refresh={refreshKey} />
+        
+        {/* View Toggle */}
+        <div className="view-toggle">
+          <button 
+            className={`view-btn ${activeView === 'dashboard' ? 'active' : ''}`}
+            onClick={() => setActiveView('dashboard')}
+          >
+            📊 Budget Dashboard
+          </button>
+          <button 
+            className={`view-btn ${activeView === 'payments' ? 'active' : ''}`}
+            onClick={() => setActiveView('payments')}
+          >
+            💸 Interac Payments
+          </button>
+        </div>
+        
+        {activeView === 'dashboard' ? (
+          <>
+            <BudgetForm onBudgetCreated={() => setRefreshKey(prev => prev + 1)} />
+            <Dashboard refresh={refreshKey} />
+          </>
+        ) : (
+          <Payments />
+        )}
       </div>
     </div>
   )
