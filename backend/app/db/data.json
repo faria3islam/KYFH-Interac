@@ -1,11 +1,99 @@
 {
-  "total_budget": 400.0,
+  "total_budget": 500.0,
   "categories": {
-    "food": 328.0,
-    "venue": 36.0,
-    "decor": 24.0,
-    "misc": 12.0
+    "food": 291.01,
+    "venue": 45.0,
+    "decor": 30.0,
+    "misc": -35.0
   },
-  "expenses": [],
-  "remaining": 400.0
+  "expenses": [
+    {
+      "amount": 18.99,
+      "category": "food",
+      "ai_purchased": true,
+      "purchase_id": "PUR-74196",
+      "vendor": "Quick Bite",
+      "product_name": "Meat Lovers Pizza",
+      "original_price": 18.99,
+      "savings": 0,
+      "ai_reasoning": "Best match for your preferences"
+    },
+    {
+      "amount": 100.0,
+      "category": "food",
+      "vendor_name": "rf",
+      "status": "paid",
+      "timestamp": "2026-01-13T22:13:35.035846",
+      "payment_date": "2026-01-13T22:14:34.803844",
+      "payment_method": "wallet_interac",
+      "wallet_transaction_id": "TXN-E8XT04AU"
+    },
+    {
+      "amount": 50.0,
+      "category": "misc",
+      "vendor_name": "m",
+      "status": "paid",
+      "timestamp": "2026-01-13T22:16:00.449785",
+      "payment_date": "2026-01-13T22:19:18.563639",
+      "payment_method": "wallet_interac",
+      "wallet_transaction_id": "TXN-MKLAFC73"
+    }
+  ],
+  "remaining": 331.01,
+  "wallet": {
+    "balance": 49.99000000000001,
+    "transactions": [
+      {
+        "id": "TXN-HW7I9IGG",
+        "type": "add_funds",
+        "amount": 399.99,
+        "balance_after": 399.99,
+        "payment_method": "interac_debit",
+        "timestamp": "2026-01-13T22:02:41.391169",
+        "status": "completed",
+        "description": "Added $399.99 to wallet via interac_debit"
+      },
+      {
+        "id": "TXN-GBJO8P1R",
+        "type": "interac_transfer",
+        "amount": -200.0,
+        "balance_after": 199.99,
+        "timestamp": "2026-01-13T22:06:23.973905",
+        "status": "completed",
+        "description": "Interac e-Transfer to at@at.com"
+      },
+      {
+        "id": "TXN-E8XT04AU",
+        "type": "vendor_payment",
+        "amount": -100.0,
+        "balance_after": 99.99000000000001,
+        "timestamp": "2026-01-13T22:14:34.803835",
+        "status": "completed",
+        "description": "Vendor Payment: rf (food)"
+      },
+      {
+        "id": "TXN-MKLAFC73",
+        "type": "vendor_payment",
+        "amount": -50.0,
+        "balance_after": 49.99000000000001,
+        "timestamp": "2026-01-13T22:19:18.563631",
+        "status": "completed",
+        "description": "Vendor Payment: m (misc)"
+      }
+    ]
+  },
+  "transactions": [
+    {
+      "id": "b9692c83",
+      "type": "send",
+      "recipient": "at@at.com",
+      "amount": 200.0,
+      "message": "split",
+      "status": "completed",
+      "timestamp": "2026-01-13T22:06:23.973872",
+      "has_security": false,
+      "payment_method": "wallet",
+      "wallet_transaction_id": "TXN-GBJO8P1R"
+    }
+  ]
 }

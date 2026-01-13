@@ -284,6 +284,26 @@
   transform: none;
 }
 
+.wallet-payment-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 15px;
+  color: #555;
+  font-weight: 500;
+}
+
+.wallet-payment-checkbox input[type="checkbox"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: #667eea;
+}
+
 /* History Section */
 .history-section {
   margin-bottom: 2.5rem;

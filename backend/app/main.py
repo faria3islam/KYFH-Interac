@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import budget, expenses, payment
+from app.routes import budget, expenses, payment, shopping, wallet
 
 app = FastAPI()
 
@@ -20,3 +20,5 @@ def root():
 app.include_router(budget.router)
 app.include_router(expenses.router)
 app.include_router(payment.router)
+app.include_router(shopping.router)
+app.include_router(wallet.router)
