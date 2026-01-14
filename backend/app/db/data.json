@@ -1,4 +1,15 @@
 {
+<<<<<<< HEAD
+  "total_budget": 300.0,
+  "categories": {
+    "food": 120.0,
+    "venue": 90.0,
+    "decor": 60.0,
+    "misc": 30.0
+  },
+  "expenses": [],
+  "remaining": 300.0
+=======
   "total_budget": 500.0,
   "categories": {
     "food": 291.01,
@@ -96,4 +107,5 @@
       "wallet_transaction_id": "TXN-GBJO8P1R"
     }
   ]
+>>>>>>> cbfce59d4a38d2617e92c2122c6b13b4736eb3ca
 }
