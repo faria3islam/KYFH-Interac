@@ -16,7 +16,8 @@ export default function Payments() {
     amount: "",
     message: "",
     security_question: "",
-    security_answer: ""
+    security_answer: "",
+    use_wallet: false
   })
 
   // Request money form
@@ -67,7 +68,8 @@ export default function Payments() {
           amount: Number(sendForm.amount),
           message: sendForm.message || undefined,
           security_question: sendForm.security_question || undefined,
-          security_answer: sendForm.security_answer || undefined
+          security_answer: sendForm.security_answer || undefined,
+          use_wallet: sendForm.use_wallet
         })
       })
 
@@ -84,7 +86,8 @@ export default function Payments() {
         amount: "",
         message: "",
         security_question: "",
-        security_answer: ""
+        security_answer: "",
+        use_wallet: false
       })
       
       fetchData()
@@ -299,6 +302,15 @@ export default function Payments() {
                 />
               </div>
             </div>
+
+            <label className="wallet-payment-checkbox">
+              <input 
+                type="checkbox"
+                checked={sendForm.use_wallet}
+                onChange={(e) => setSendForm({...sendForm, use_wallet: e.target.checked})}
+              />
+              <span>👛 Pay with Wallet</span>
+            </label>
 
             <button type="submit" className="submit-btn" disabled={loading}>
               {loading ? "Sending..." : `💸 Send Interac e-Transfer`}

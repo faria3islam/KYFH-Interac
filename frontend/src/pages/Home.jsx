@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom"
 import BudgetForm from "../components/BudgetForm"
 import Dashboard from "../components/Dashboard"
 import Payments from "../components/Payments"
+import PersonalShopper from "../components/PersonalShopper"
+import Wallet from "../components/Wallet"
 import "../components/BudgetForm.css"
 
 export default function Home() {
@@ -44,6 +46,18 @@ export default function Home() {
             📊 Budget Dashboard
           </button>
           <button 
+            className={`view-btn ${activeView === 'wallet' ? 'active' : ''}`}
+            onClick={() => setActiveView('wallet')}
+          >
+            👛 Wallet
+          </button>
+          <button 
+            className={`view-btn ${activeView === 'shopper' ? 'active' : ''}`}
+            onClick={() => setActiveView('shopper')}
+          >
+            🛒 AI Personal Shopper
+          </button>
+          <button 
             className={`view-btn ${activeView === 'payments' ? 'active' : ''}`}
             onClick={() => setActiveView('payments')}
           >
@@ -56,6 +70,10 @@ export default function Home() {
             <BudgetForm onBudgetCreated={() => setRefreshKey(prev => prev + 1)} />
             <Dashboard refresh={refreshKey} />
           </>
+        ) : activeView === 'wallet' ? (
+          <Wallet key={refreshKey} />
+        ) : activeView === 'shopper' ? (
+          <PersonalShopper onPurchaseComplete={() => setRefreshKey(prev => prev + 1)} />
         ) : (
           <Payments />
         )}

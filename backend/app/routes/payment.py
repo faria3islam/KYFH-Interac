@@ -4,6 +4,7 @@ from datetime import datetime
 from typing import List, Optional
 import uuid
 from app.db.db import load_data, save_data
+from app.services.wallet_service import WalletService
 
 router = APIRouter()
 
@@ -13,6 +14,7 @@ class InteracTransfer(BaseModel):
     message: Optional[str] = None
     security_question: Optional[str] = None
     security_answer: Optional[str] = None
+    use_wallet: bool = Field(False, description="Pay with wallet balance")
 
 class MoneyRequest(BaseModel):
     requester_email: EmailStr
@@ -29,7 +31,22 @@ def send_interac(transfer: InteracTransfer):
     try:
         data = load_data()
         
-        if not data or data.get("remaining", 0) < transfer.amount:
+        if not data:
+            raise HTTPException(status_code=400, detail="No budget created yet")
+        
+        # Initialize wallet if doesn't exist
+        if "wallet" not in data:
+            data["wallet"] = {"balance": 0.0, "transactions": []}
+        
+        # Check wallet balance if using wallet
+        if transfer.use_wallet:
+            wallet_balance = WalletService.get_balance(data["wallet"])
+            if wallet_balance < transfer.amount:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Insufficient wallet balance. Balance: ${wallet_balance:.2f}, Required: ${transfer.amount:.2f}"
+                )
+        elif data.get("remaining", 0) < transfer.amount:
             raise HTTPException(status_code=400, detail="Insufficient budget to send transfer")
         
         # Create mock transaction
@@ -50,8 +67,19 @@ def send_interac(transfer: InteracTransfer):
         
         data["transactions"].append(transaction)
         
-        # Deduct from budget
-        data["remaining"] -= transfer.amount
+        # Deduct from wallet or budget
+        if transfer.use_wallet:
+            wallet_transaction = WalletService.deduct_funds(
+                data["wallet"],
+                transfer.amount,
+                f"Interac e-Transfer to {transfer.recipient_email}",
+                "interac_transfer"
+            )
+            transaction["payment_method"] = "wallet"
+            transaction["wallet_transaction_id"] = wallet_transaction["id"]
+        else:
+            data["remaining"] -= transfer.amount
+            transaction["payment_method"] = "interac"
         
         save_data(data)
         
