@@ -1,11 +1,11 @@
 {
-  "total_budget": 400.0,
+  "total_budget": 300.0,
   "categories": {
-    "food": 328.0,
-    "venue": 36.0,
-    "decor": 24.0,
-    "misc": 12.0
+    "food": 120.0,
+    "venue": 90.0,
+    "decor": 60.0,
+    "misc": 30.0
   },
   "expenses": [],
-  "remaining": 400.0
+  "remaining": 300.0
 }
